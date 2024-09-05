@@ -22,7 +22,7 @@
   padding: 30px;
   background-color: var(--Light-Grayish-Blue);
   .box {
-    width: min(900px, 90%);
+    width: min(1000px, 90%);
     height: 350px;
     display: flex;
     align-items: center;
