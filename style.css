@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --Very-Dark-Grayish_Blue: hsl(217, 19%, 35%);
+  --Desaturated-Dark_Blue: hsl(214, 17%, 51%);
+  --Grayish-Blue: hsl(212, 23%, 69%);
+  --Light-Grayish-Blue: hsl(210, 46%, 95%);
+}
+.container {
+  font-family: "Manrope", sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: var(--Light-Grayish-Blue);
+  .box {
+    width: min(900px, 90%);
+    height: 350px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    background-color: white;
+    img {
+      width: 40%;
+      height: 100%;
+      border-radius: 12px 0 0 12px;
+    }
+    .text {
+      width: 60%;
+      height: 100%;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      h2 {
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: var(--Very-Dark-Grayish_Blue);
+      }
+      p {
+        font-weight: 500;
+        line-height: 1.6;
+        letter-spacing: 1px;
+        color: var(--Grayish-Blue);
+      }
+      .user {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        & > div:not(.share) {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+          }
+        }
+        .share {
+          position: relative;
+          .shr-btn {
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--Light-Grayish-Blue);
+            transition: 0.3s;
+            &:hover {
+              cursor: pointer;
+            }
+            &.active {
+              background-color: var(--Grayish-Blue);
+            }
+            img {
+              width: 25px;
+              height: 25px;
+            }
+          }
+          .shr-box {
+            display: none;
+            align-items: center;
+            gap: 20px;
+            color: var(--Grayish-Blue);
+            background-color: var(--Very-Dark-Grayish_Blue);
+            padding: 20px 45px;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -90px;
+            box-shadow: 0px 0px 10px var(--Grayish-Blue);
+            animation: shrAnOFF 0.9s ease;
+            &.active {
+              animation: shrAnON 0.9s ease;
+              display: flex;
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 50%;
+              bottom: -30px;
+              transform: translateX(-50%);
+              border: 15px solid;
+              border-color: var(--Very-Dark-Grayish_Blue) transparent
+                transparent;
+            }
+
+            h4 {
+              text-transform: uppercase;
+              margin-right: 5px;
+              letter-spacing: 4px;
+              font-weight: 700;
+            }
+
+            img {
+              width: 25px;
+              height: 25px;
+              border-radius: 0px;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+            .close {
+              display: none;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes shrAnON {
+  0% {
+    opacity: 0;
+    top: -30px;
+  }
+  100% {
+    opacity: 1;
+    top: -90px;
+  }
+}
+@keyframes shrAnOFF {
+  0% {
+    opacity: 1;
+    top: -90px;
+  }
+  100% {
+    opacity: 0;
+    top: -30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .container {
+    .box {
+      img {
+        border-radius: 15px 15px 0 0;
+      }
+      .text {
+        h2 {
+          font-size: 20px;
+        }
+        p {
+          font-size: 15px;
+        }
+
+        .user {
+          .info {
+            h3 {
+              font-size: 16px;
+            }
+          }
+          .share {
+            .shr-btn {
+              img {
+                width: 20px;
+                height: 20px;
+              }
+            }
+            .shr-box {
+              left: -20px;
+              &::after {
+                left: 65%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 805px) {
+  .container {
+    padding: 10px;
+    .box {
+      flex-direction: column;
+      width: min(400px, 95%);
+      height: min(650px, 90%);
+
+      img {
+        width: 100%;
+        height: 250px;
+      }
+      .text {
+        width: 100%;
+        gap: 15px;
+        h2 {
+          font-size: 20px;
+        }
+
+        .user {
+          margin-top: 10px;
+          & > div:not(.share) {
+            img {
+              width: 40px;
+              height: 40px;
+            }
+            .info {
+              h3 {
+                font-size: 16px;
+              }
+              p {
+                font-size: 12px;
+              }
+            }
+          }
+          .share {
+            .shr-btn {
+              width: 40px;
+              height: 40px;
+              img {
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+          &.active {
+            & > div:not(.share) {
+              display: none;
+            }
+
+            .share {
+              width: 100%;
+              .shr-btn {
+                display: none;
+              }
+              .shr-box {
+                position: relative;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                right: 0;
+                animation: none;
+                border-radius: 4px;
+                box-shadow: none;
+                &::after {
+                  display: none;
+                }
+                .close {
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
